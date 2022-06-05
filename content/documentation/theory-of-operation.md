@@ -1,5 +1,6 @@
 ---
 title: "Theory of Operation"
+type: page
 weight: 1
 ---
 
@@ -9,7 +10,7 @@ Managed files are kept not as a single list, but as multiple lists, one for each
 
 In addition to the managed files, the manifest also contains a list of **hostnames**, with the tags that should be applied to each hostname. This allows you to run the same Hamstercage command across multiple hosts and have files applied according to the hosts' respective tags.
 
-The contents of files is kept alongside the manifest, using the path of the target. For example, a target file `/etc/bash_profile` would be stored in `repo/all/etc/bash_profile`.
+The contents of files is kept alongside the manifest, using the path of the target. For example, a target file `/etc/profile` would be stored in `repo/all/etc/profile`.
 
 While Hamstercage manages files very efficiently, there are some configuration tasks that require manipulation of existing files, refreshing a set of files, or restarting a daemon. Hamstercage does not attempt to implement any such actions. **Hooks** allow you to supply your own custom logic for these kinds of actions. You can define hooks to run before or after a command is executed (for example before a `save` or after an `apply`). Hooks are defined on tags, so you can cater the commands to the set of files that are managed. Hooks can be individual shell commands, any executable including scripts, or Python programs that are executed inside Hamstercages Python process.
 
@@ -24,9 +25,49 @@ tags:
   all:
     description: files that apply to all hosts
     entries:
-      foo.txt:
-        group: staff
-        mode: 0o644
-        owner: stb
+      /etc/profile:
+        group: root
+        mode: 0o444
+        owner: root
         type: file
 ```
+
+## Managing the same file in multiple tags
+
+When using multiple tags, it is possible that a file in the target has an entry in more than one tag. Consider this manifest:
+```yaml
+hosts:
+  testing.example.com:
+    description: ''
+    tags:
+    - jumphost
+    - all
+  web.example.com:
+    description: ''
+    tags:
+    - web
+    - all
+tags:
+  all:
+    description: files that apply to all hosts
+    entries:
+      /etc/profile:
+        group: root
+        mode: 0o444
+        owner: root
+        type: file
+  jumphost:
+    description: files that apply only to jumphosts
+    entries:
+      /etc/profile:
+        group: root
+        mode: 0o444
+        owner: root
+        type: file
+  web:
+    description: files that apply only to jumphosts
+```
+
+The file `/etc/profile` is kept in the repository both in the `all` and in the `jumphosts` tags.
+
+When processing files, Hamstercage will always consider the entry in the first tag that defines it. When applying or saving the files on `testing.example.com`, the entry in `jumphost` will be selected, because the tag `jumphost` comes first in the list of tags for that host. On `web.example.com`, no entry exists in the tag `web`, so the entry in `all`is selected.

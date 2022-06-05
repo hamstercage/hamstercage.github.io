@@ -7,8 +7,8 @@
             {{.}}
           </div>
         {{ end }}
-        {{ if .Paginator.Pages }}
-        <h2>Further Reading</h2>
+        {{ if .Paginator.Pages.ByWeight }}
+        <h2>Documentation Topics</h2>
         <ul>
             {{ range .Paginator.Pages }}
             <li>{{ partial "page_link.html" .}}</li>

@@ -1,5 +1,6 @@
 ---
 title: "Installation"
+type: page
 weight: 2
 ---
 
