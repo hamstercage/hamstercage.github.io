@@ -1,6 +1,5 @@
 baseURL = 'http://hamstercage.io/'
 languageCode = 'en-us'
-publishDir = "docs/"
 title = 'Hamstercage'
 theme = "beautifulhugo"
 
