@@ -1,0 +1,33 @@
+baseURL = 'http://hamstercage.io/'
+languageCode = 'en-us'
+title = 'Hamstercage'
+theme = "beautifulhugo"
+
+author.name = ""
+
+DefaultContentLanguage = "en"
+metaDataFormat = "yaml"
+pygmentsStyle = "colorful"
+pygmentsUseClasses = true
+pygmentsCodeFences = true
+pygmentsCodefencesGuessSyntax = true
+
+[Params]
+subtitle = "Config Management for Pets, not Cattle"
+
+comments = false
+commit = false
+dateFormat = "1.2.2006"
+hideAuthor = true
+mainSections = ["post","posts"]
+selfHosted = true
+
+[[menu.main]]
+    name = "Home"
+    url = ""
+    weight = 1
+
+[[menu.main]]
+    name = "Documentation"
+    url = "documentation/"
+    weight = 2
