@@ -24,7 +24,7 @@ jobs:
       - name: Build
         run: |
           hugo --minify
-          echo hamstercage.io >CNAME
+          echo hamstercage.io >public/CNAME
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
