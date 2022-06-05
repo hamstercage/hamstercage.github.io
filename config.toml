@@ -1,4 +1,4 @@
-baseURL = 'http://hamstercage.io/'
+baseURL = 'https://hamstercage.io/'
 languageCode = 'en-us'
 title = 'Hamstercage'
 theme = "beautifulhugo"
