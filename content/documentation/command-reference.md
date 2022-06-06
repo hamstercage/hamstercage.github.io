@@ -58,7 +58,7 @@ All managed files are stored under this directory. The default is the same direc
 
 When adding files or applying them to the target directory, one or more tags can be specified. See the `add` and `apply` commands.
 
-## Verbose output `-v` / `--verbose`
+### Verbose output `-v` / `--verbose`
 
 By default, Hamstercage will only print warnings or error. With this flag, progress will be reported on all operations.
 

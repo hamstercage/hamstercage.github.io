@@ -12,7 +12,7 @@ In addition to the managed files, the manifest also contains a list of **hostnam
 
 The contents of files is kept alongside the manifest, using the path of the target. For example, a target file `/etc/profile` would be stored in `repo/all/etc/profile`.
 
-While Hamstercage manages files very efficiently, there are some configuration tasks that require manipulation of existing files, refreshing a set of files, or restarting a daemon. Hamstercage does not attempt to implement any such actions. **Hooks** allow you to supply your own custom logic for these kinds of actions. You can define hooks to run before or after a command is executed (for example before a `save` or after an `apply`). Hooks are defined on tags, so you can cater the commands to the set of files that are managed. Hooks can be individual shell commands, any executable including scripts, or Python programs that are executed inside Hamstercages Python process.
+While Hamstercage manages files very efficiently, there are some configuration tasks that require manipulation of existing files, refreshing a set of files, or restarting a daemon. Hamstercage does not attempt to implement any such actions. **Hooks** allow you to supply your own custom logic for these kinds of actions. You can define hooks to run before or after a command is executed (for example before a `save` or after an `apply`). Hooks are defined on tags, so you can cater the commands to the set of files that are managed. Hooks can be individual shell commands, any executable including scripts, or Python programs that are executed inside Hamstercage's Python process.
 
 This is a very minimal example with one host, one tag and one file:
 ```yaml
@@ -32,9 +32,13 @@ tags:
         type: file
 ```
 
+## Interaction with version control systems
+
+Hamstercage is designed to produce a repository that can be checked in and managed through a version control system like Git. Hamstercage does not make any assumptions about how that system works, so you can use whichever system you prefer.
+
 ## Permissions in the repo
 
-When you add a file to a tag in the repo, Hamstercage copies the contents of the file from the target. The owner, group, and permissions of the file are added to the metadata in the manifest, but the file in the repo will receive the same owner, group, and permissions as the manifest file, modulo the execute bit. For example, if you add `/etc/profile` to the repo (which is not executable), the file in the repo will be owned by the same account as the manifest, and the file mode will be the same as the manifest. When you add a file that has the execute bit set, that will be set on the repo file as well.
+When you add a file to a tag in the repo, Hamstercage copies the contents of the file from the target. The owner, group, and permissions of the file are added to the metadata in the manifest, but the file in the repo will receive the same owner, group, and permissions as the manifest file. For example, if you add `/etc/profile` to the repo (which is not executable), the file in the repo will be owned by the same account as the manifest, and the file mode will be the same as the manifest. When you add a file that has the execute bit set, that will be set on the repo file as well.
 
 ```
 $ ls -ld hamstercage.yaml /etc/profile tags/all/etc/profile
@@ -46,6 +50,8 @@ $ ls -ld hamstercage.yaml /etc/profile tags/all/etc/profile
 In the above example, the repository directory has group wheel, and only the user and group have access to it; all the files in the tags have ownership and permissions accordingly.
 
 This allows you to control who has access to the Hamstercage repo and its contents. If you share admin duties for the machines with other people, you can put the repo into a shared directory, but adjust the ownership and permissions so that only the admins have access.
+
+For best results interacting with the version control system, you should make sure that your umask is set to `002`, so that files created by your version control system are group-writable. This ensures that your fellow admins can edit files without having to change their permissions first.
 
 ## Managing the same file in multiple tags
 

@@ -1,5 +1,5 @@
 ---
-title: "Index"
+title: "Home"
 date: 2022-06-05T08:55:19+02:00
 ---
 

@@ -19,7 +19,7 @@ comments = false
 commit = false
 dateFormat = "1.2.2006"
 hideAuthor = true
-mainSections = ["post","posts"]
+mainSections = ["post"]
 selfHosted = true
 
 [[menu.main]]
