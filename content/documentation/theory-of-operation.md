@@ -2,6 +2,7 @@
 title: "Theory of Operation"
 type: page
 weight: 1
+bigimg: [{src: "/img/math-work.jpg", desc: ""}]
 ---
 
 Hamstercage keeps a list of files under management in a **manifest** file, by default `hamstercage.yaml`. The various Hamstercage commands can be used to add, update, and remove files from the manifest, but you can always make changes manually, for example to correct the owner or mode of a file.
@@ -10,9 +11,14 @@ Managed files are kept not as a single list, but as multiple lists, one for each
 
 In addition to the managed files, the manifest also contains a list of **hostnames**, with the tags that should be applied to each hostname. This allows you to run the same Hamstercage command across multiple hosts and have files applied according to the hosts' respective tags.
 
-The contents of files is kept alongside the manifest, using the path of the target. For example, a target file `/etc/profile` would be stored in `repo/all/etc/profile`.
+The contents of files is kept alongside the manifest, using the path of the target. For example, a target file `/etc/profile` would be stored in `tags/all/etc/profile`.
 
 While Hamstercage manages files very efficiently, there are some configuration tasks that require manipulation of existing files, refreshing a set of files, or restarting a daemon. Hamstercage does not attempt to implement any such actions. **Hooks** allow you to supply your own custom logic for these kinds of actions. You can define hooks to run before or after a command is executed (for example before a `save` or after an `apply`). Hooks are defined on tags, so you can cater the commands to the set of files that are managed. Hooks can be individual shell commands, any executable including scripts, or Python programs that are executed inside Hamstercage's Python process.
+
+Hooks are called for these commands:
+* [`apply`](../command-reference/#adding-files-add)
+* [`diff`](../command-reference/#determining-differences-diff)
+* [`save`](../command-reference/#save-target-to-repository-save)
 
 This is a very minimal example with one host, one tag and one file:
 ```yaml

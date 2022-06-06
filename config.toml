@@ -31,3 +31,8 @@ selfHosted = true
     name = "Documentation"
     url = "documentation/"
     weight = 2
+
+[[menu.main]]
+    name = "Blog"
+    url = "posts/"
+    weight = 3

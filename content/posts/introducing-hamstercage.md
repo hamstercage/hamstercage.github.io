@@ -3,9 +3,11 @@ title: "Introducing Hamstercage"
 subtitle: "Pets, not Cattle"
 date: 2022-06-05T08:55:19+02:00
 type: post
+bigimg: [{src: "/img/welcome-sign.jpg", desc: ""}]
 ---
 
 **Hamstercage** is a tool to manage config files on hosts (bare metal, VMs, containers, jails). Unlike other systems, you primarily edit the config files on the target host, then use Hamstercage to save and distribute changes to other machines.
+<!--more-->
 
 If you work professionally with many machines and configs, you likely will have heard “cattle, not pets” as the philosophy for managing machines, VMs, etc., and you’re likely using Ansible, Chef, Puppet, SaltStack, or another configuration management system that allows you to manage system configuration comprehensively. This approach works well when you have many targets that share many traits, you have a lab where you can test configuration changes, and you have full time staff to take care of it all.
 

@@ -2,9 +2,10 @@
 title: "Installation"
 type: page
 weight: 2
+bigimg: [{src: "/img/gears.jpg", desc: ""}]
 ---
 
-Hamstercage is a Python module. You can install it from [the source repository](https://github.com/hamstercage/hamstercage/), or from [PyPi(https://pypi.org/project/hamstercage/)].
+Hamstercage is a Python module. You can install it from [the source repository](https://github.com/hamstercage/hamstercage/), or from [PyPi](https://pypi.org/project/hamstercage/).
 
 
 ```shell

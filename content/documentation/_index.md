@@ -1,6 +1,7 @@
 ---
 title: Hamstercage Documentation
 type: overview
+bigimg: [{src: "/img/book.jpg", desc: ""}]
 ---
 If you work professionally with many machines and configs, you like will have heard "cattle, not pets" as the philosophy for managing machines, VMs, etc., and you're likely using Ansible, Puppet, SaltStack, or another configuration management system that allows you to express configuration as code. This approach works well when you have many targets that share many traits, you have a lab where you can test configuration changes, and you have full time staff to take care of it all.
 

@@ -2,6 +2,7 @@
 title: "Manifest"
 type: page
 weight: 3
+bigimg: [{src: "/img/organ-manual.jpg", desc: ""}]
 ---
 All information about file entries is stored in the manifest file `hamstercage.yaml`. This [YAML](https://yaml.org) file consists of these top-level entries:
 * `hosts`: each entry describes one host, in particular the set of tags that apply to it

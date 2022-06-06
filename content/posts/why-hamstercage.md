@@ -3,9 +3,10 @@ title: "Why Hamstercage"
 subtitle: "Alternatives, and why they might not be a good fit"
 date: 2022-06-06T10:33:00+02:00
 type: post
+bigimg: [{src: "/img/why-browsers.jpg", desc: ""}]
 ---
 Hamstercage is not unique in its goal to manage config files. Here is an overview of some other tools, and how it differs from them.
-
+<!--more-->
 While this discussion focuses on the use of Git as a version control system, others can be used interchangeably.
 
 # The Big Guns

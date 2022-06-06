@@ -2,6 +2,7 @@
 title: "Using Hamstercage"
 type: page
 weight: 4
+bigimg: [{src: "/img/tools.jpg", desc: ""}]
 ---
 After installation, Hamstercage is available on the path as `hamstercage`.
 

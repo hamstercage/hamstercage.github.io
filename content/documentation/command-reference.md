@@ -2,6 +2,7 @@
 title: "Command Reference"
 type: page
 weight: 5
+bigimg: [{src: "/img/book.jpg", desc: ""}]
 ---
 
 Hamstercage commands take a number of options and parameters.
