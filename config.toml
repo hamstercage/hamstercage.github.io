@@ -17,7 +17,7 @@ subtitle = "Config Management for Pets, not Cattle"
 
 comments = false
 commit = false
-dateFormat = "1.2.2006"
+dateFormat = "2.1.2006"
 hideAuthor = true
 mainSections = ["post"]
 selfHosted = true
