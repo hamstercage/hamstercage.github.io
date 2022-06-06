@@ -32,6 +32,21 @@ tags:
         type: file
 ```
 
+## Permissions in the repo
+
+When you add a file to a tag in the repo, Hamstercage copies the contents of the file from the target. The owner, group, and permissions of the file are added to the metadata in the manifest, but the file in the repo will receive the same owner, group, and permissions as the manifest file, modulo the execute bit. For example, if you add `/etc/profile` to the repo (which is not executable), the file in the repo will be owned by the same account as the manifest, and the file mode will be the same as the manifest. When you add a file that has the execute bit set, that will be set on the repo file as well.
+
+```
+$ ls -ld hamstercage.yaml /etc/profile tags/all/etc/profile
+-rw-r--r--  1 root  wheel   488 Nov  1  2020 /etc/profile
+-rw-r--r--  1 root  wheel  5152 Jun  4 22:31 hamstercage.yaml
+-rw-rw----  1 root  wheel  1130 Jan 21  2017 tags/all/etc/profile
+```
+
+In the above example, the repository directory has group wheel, and only the user and group have access to it; all the files in the tags have ownership and permissions accordingly.
+
+This allows you to control who has access to the Hamstercage repo and its contents. If you share admin duties for the machines with other people, you can put the repo into a shared directory, but adjust the ownership and permissions so that only the admins have access.
+
 ## Managing the same file in multiple tags
 
 When using multiple tags, it is possible that a file in the target has an entry in more than one tag. Consider this manifest:
