@@ -24,7 +24,7 @@ To add one more files, directories, or symbolic links to the repo, use the `add`
 
 For example, to add `/etc/profile` to the `all` tag, use:
 ```shell
-sudo hamstercage -t all add /etc/profile
+sudo hamstercage add all /etc/profile
 ```
 
 ## Applying contents from the repository to the target

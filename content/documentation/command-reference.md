@@ -8,8 +8,7 @@ bigimg: [{src: "/img/book.jpg", desc: ""}]
 Hamstercage commands take a number of options and parameters.
 
 ```
-usage: hamstercage [-h] [-d DIRECTORY] [-f FILE] [-n HOSTNAME] [-r REPO] [-t TAG] [-v]
-                   {add,apply,diff,init,list,ls,remove,del,rm,save,tag} ...
+usage: hamstercage [-h] [-d DIRECTORY] [-f FILE] [-n HOSTNAME] [-r REPO] [-t TAG] [-v] {add,apply,diff,init,list,ls,remove,del,rm,save,tag} ...
 
 Manage the hamster cage.
 
@@ -57,7 +56,7 @@ All managed files are stored under this directory. The default is the same direc
 
 ### Tags `-t` / `--tag`
 
-When adding files or applying them to the target directory, one or more tags can be specified. See the `add` and `apply` commands.
+By default, the tags to be used are taken from the host entry in the manifest. You can override them with this parameter.
 
 ### Verbose output `-v` / `--verbose`
 
@@ -68,10 +67,10 @@ By default, Hamstercage will only print warnings or error. With this flag, progr
 ### Adding Files `add`
 
 ```shell
-hamstercage -t mytag add file...
+hamstercage add tag file...
 ```
 
-Add one or more files to the repository. You need to specify exactly one tag, which determines the tag the file will be added to. The file will be added to the manifest, and the contents of the file copied to the repository.
+Add one or more files to the repository. You need to specify the tag the files will be added to. The files will be added to the manifest, and the contents of the files copied to the repository.
 
 ### Applying Files `apply`
 
@@ -108,7 +107,7 @@ Lists all entries in the manifest. When `-l` is given, will print more details o
 ### Remove Files From Repository `remove`
 
 ```shell
-hamstercage -t tag remove file...
+hamstercage remove tag file...
 ```
 
 Removes one or more files from the specified tag. Does not change files in the target.
