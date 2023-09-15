@@ -101,4 +101,4 @@ When processing files, Hamstercage will always consider the entry in the first t
 
 ## Defining Hooks
 
-See [Manifest, Tags: Hooks](..manifest/tags-hooks) for details on defining hooks.
+See [Manifest, Tags: Hooks](../manifest#tags-hooks) for details on defining hooks.
