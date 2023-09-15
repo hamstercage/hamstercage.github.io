@@ -98,3 +98,7 @@ tags:
 The file `/etc/profile` is kept in the repository both in the `all` and in the `jumphosts` tags.
 
 When processing files, Hamstercage will always consider the entry in the first tag that defines it. When applying or saving the files on `testing.example.com`, the entry in `jumphost` will be selected, because the tag `jumphost` comes first in the list of tags for that host. On `web.example.com`, no entry exists in the tag `web`, so the entry in `all`is selected.
+
+## Defining Hooks
+
+See [Manifest, Tags: Hooks](..manifest/tags-hooks) for details on defining hooks.

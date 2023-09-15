@@ -72,6 +72,8 @@ hamstercage add tag file...
 
 Add one or more files to the repository. You need to specify the tag the files will be added to. The files will be added to the manifest, and the contents of the files copied to the repository.
 
+Adding a file that is already in the manifest for the given tag is an error.
+
 ### Applying Files `apply`
 
 ```shell
@@ -80,14 +82,12 @@ hamstercage apply [file...]
 
 Apply files from the repository to the target. Without any further options and parameters, will apply all files from the default tags for this hostname. Specify one or more tags to limit files to those in those tags, or specify filenames that should be applied.
 
-Adding a file that is already in the manifest for the given tag is an error.
-
 ### Determining Differences `diff`
 
 ```shell
 hamstercage diff [file...]
 ```
-Prints out a unified diff between all files in the repository and in the target. This allows you to preview what changed `apply` or `save` will make.
+Prints out a unified diff between all files in the repository and in the target. This allows you to preview what changed `apply` or `save` will make. Lines added in the system files are marked with `+`, while lines added in the local repo are marked with `-`.
 
 ### Initialize a New Repository `init`
 
@@ -125,5 +125,5 @@ Updates the manifest entries and repository files from the target.
 Adds a new tag to the manifest.
 
 ```shell
-hamstercage tag add [-d description] [file...]
+hamstercage tag add [-d description] tag
 ```
